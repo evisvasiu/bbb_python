@@ -23,8 +23,8 @@ import sys
 import Adafruit_DHT
 import time
 import paho.mqtt.client as mqtt # mosquitto.py is deprecated
-user = "admin"
-password = "nodered"
+user = "*****"
+password = "******"
 mqttc = mqtt.Client("ioana")
 mqttc.connect("138.3.246.220",1883,60)
 #mqttc.subscribe("test/", 2) # <- pointless unless you include a subscribe callback
