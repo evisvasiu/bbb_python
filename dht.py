@@ -1,3 +1,8 @@
+import time
+import paho.mqtt.client as mqtt # mosquitto.py is deprecated
+
+user = "user"
+password = "nodered"
 #!/usr/bin/python
 # Copyright (c) 2014 Adafruit Industries
 # Author: Tony DiCola
@@ -23,12 +28,16 @@ import sys
 import Adafruit_DHT
 import time
 import paho.mqtt.client as mqtt # mosquitto.py is deprecated
-user = "*****"
+
+user = "****"
 password = "******"
-mqttc = mqtt.Client("ioana")
+mqttc = mqtt.Client("BBB")
+mqttc.username_pw_set(user, password=password)
 mqttc.connect("138.3.246.220",1883,60)
+
 #mqttc.subscribe("test/", 2) # <- pointless unless you include a subscribe callback
 mqttc.loop_start()        #start the loop
+
 while True:
 
 # Parse command line parameters.
@@ -62,7 +71,6 @@ while True:
             sys.exit(1)
 
         mqttc.publish("iot",('{0:0.1f}, {1:0.1f}'.format(temperature, humidity)))
-        time.sleep(60) # sleep for 10 seconds before next call
+		time.sleep(60) # sleep for 10 seconds before next call
 
-
-
+mqttc.loop_forever(retry_first_connection=True)
