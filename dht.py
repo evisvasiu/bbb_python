@@ -1,9 +1,5 @@
 ###demo code provided by steve cope at www.steves-internet-guide.com
-##email steve@copeconsulting.co.uk
-###Free to use for any purpose
-"""
-Client reconnect demo code
-"""
+
 import paho.mqtt.client as mqtt  #import the client
 import time,sys
 import Adafruit_DHT
